@@ -1,0 +1,22 @@
+﻿@using TXTextControl.Web
+@using TXTextControl.Web.MVC
+
+@model collaborationsync.Models.EditorView
+
+@{
+    ViewData["Username"] = Model.Username;
+}
+
+<div style="width: 100%; height: 800px">
+
+@Html.TXTextControl().TextControl(settings =>
+{
+    settings.Dock = DockStyle.Fill;
+    settings.UserNames = new string[] { Model.Username };
+    settings.EditMode = EditMode.ReadAndSelect;
+}).LoadText("App_Data/document_final.tx", StreamType.InternalUnicodeFormat).Render()
+
+</div>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
